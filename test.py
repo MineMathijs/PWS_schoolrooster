@@ -1,9 +1,13 @@
 import sqlite3
-from venv import create
 
 conn = sqlite3.connect('test.db')
 
 c = conn.cursor()
 
-#create table:
-c.execute('''CREATE TABLE stocks (date text, trans text, symbol text, qty real, price real)''')
+#insert row
+c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
+
+#save changes
+conn.commit()
+
+conn.close()
