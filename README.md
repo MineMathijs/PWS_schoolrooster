@@ -1,6 +1,4 @@
 # PWS_schoolrooster
 
-Wat maakt een rooster goed?
+Genetic algorithm die ook met den database interact
 
-
-database using SQLite
