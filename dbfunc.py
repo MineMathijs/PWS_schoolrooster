@@ -31,6 +31,19 @@ def show_all():
     # conn.commit()
     conn.close()
 
+# querry DB and return all records
+def get_all():
+    #connet to database & create cursur
+    conn = sqlite3.connect("item.db")
+    c = conn.cursor()
+
+    c.execute("SELECT rowid,* FROM items")
+    return c.fetchall()
+
+    # commit and close the connetion to db
+    # conn.commit()
+    conn.close()
+
 # add a new record to the table
 def add_one(name: str, weight: int, value: int):
     #connet to database & create cursur
