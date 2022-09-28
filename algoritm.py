@@ -1,10 +1,9 @@
-from cgitb import reset
+
 from collections import namedtuple
 from functools import partial
 from random import choices, randint, randrange
 import random
 from typing import Callable, List, Tuple
-from unittest import result
 import dbfunc
 
 # dbfunc.show_all()
@@ -100,7 +99,7 @@ def run_evolution(
     population = populate_func()
 
     for i in range(generation_limit):
-        population = sorted(population, key=lambda genome: fitness_func(genome), reverse=True)
+        population = sorted(population, key=lambda genome, reverse=True)
         
         if fitness_func(population[0]) >= fitnesss_limit:
             break
