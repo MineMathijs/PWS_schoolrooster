@@ -23,6 +23,11 @@ things = [
     Thing('Coffee mug', 60, 350),
     Thing('Notepad', 40, 333),
     Thing('Water Bottle', 30, 192),
+    Thing('Mints', 5, 25),
+    Thing('Socks', 10, 38),
+    Thing('Tissues', 15, 80),
+    Thing('Phone', 500,200),
+    Thing('Baseball cap', 100, 70)
 ]
 
 more_things = [
@@ -42,7 +47,7 @@ def generate_population(size: int, genome_length: int) -> Population:
     return [generate_genome(genome_length) for _ in range(size)]
 
 # fitnes function
-def fitness(genome: Genome, things, wheight_limit: int) -> int:
+def fitness(genome: Genome, things, weight_limit: int) -> int:
     if len(genome) != len(things):
         raise ValueError("genome and thing must be same length")
     
@@ -54,7 +59,7 @@ def fitness(genome: Genome, things, wheight_limit: int) -> int:
             weight += thing.weight
             value += thing.value
 
-            if weight > wheight_limit:
+            if weight > weight_limit:
                 return 0
     return value
 
@@ -90,7 +95,7 @@ def mutation(genome: Genome, num: int = 1, probability: float = 0.5) -> Genome:
 def run_evolution(
     populate_func: PopulateFunc,
     fitness_func: FitnessFunc,
-    fitnesss_limit: int = 740,
+    fitnesss_limit: int = 1310,
     selection_func: SelectionFunc = selection_pair,
     crossover_func: CrossoverFunc = single_point_crossover,
     mutation_func: MutateFunc = mutation,
@@ -99,7 +104,7 @@ def run_evolution(
     population = populate_func()
 
     for i in range(generation_limit):
-        population = sorted(population, key=lambda genome, reverse=True)
+        population = sorted(population, key=lambda genome: fitness_func(genome), reverse=True)
         
         if fitness_func(population[0]) >= fitnesss_limit:
             break
