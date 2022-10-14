@@ -30,7 +30,7 @@ situatie | hoeveel fitness verschill
 ---------------------------------------------------------------
 
 situatie | hoeveel fitness verschill
-2x zelfde vak op een dag -1000\n\n\n\n
+2x zelfde vak op een dag -1000
 tussenuur -100
 1e -30
 8e -50
