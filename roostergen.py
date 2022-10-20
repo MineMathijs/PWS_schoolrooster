@@ -24,7 +24,7 @@ def gen_rooster(vakuur: list, dagen: int, daguuren: int): #genereert een rooster
             rooster[y][x] = i
     return rooster
 
-def print_rooster_vaknaam(rooster: list, vaknaam: list):
+def print_rooster_vaknaam(rooster: list, vaknaam: list): # print de rooster list met woorden ipv nummers
     naamrooster = []
     for i in range(len(rooster)):
         temprooster = []
