@@ -55,3 +55,15 @@ vak | aantal les uuren
 ...
 
 ---------------------------------------------------------------
+
+
+
+
+
+Leerling heeft rooster heeft vakken heeft uuren
+
+
+PvA:
+
+eerst 1 rooster voor 1 persoon.
+5x6
