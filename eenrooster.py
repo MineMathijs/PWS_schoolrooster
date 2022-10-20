@@ -1,58 +1,75 @@
 from random import randint
 
-import time
-start_time = time.time()
-
-vakuur = [ #uuren
+vakuur = [ # #uuren per #vak
     0,
     4,
     3,
     3,
     5,
     2,
-    4
+    4,
+    3
 ]
 
-vaknaam = [
+vaknaam = [ # naam per #vak
     "-          ",
     "Informatica",
     "Wiskunde   ",
     "Engels     ",
     "Nederlands ",
     "Natuurkunde",
-    "Scheikunde "
+    "Scheikunde ",
+    "Duits      "
 ]
 
-rooster = [
+rooster = [ # leeg rooster 
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]]
+
+options = []
+
+for i in range(len(rooster)):
+    for j in range(len(rooster[i])):
+        tempoptions = [i,j]
+        options.append(tempoptions)
+
+print(options)
+
+# for i in range(len(vakuur)):
+#     for j in range(vakuur[i]):
+#         y = randint(0,len(rooster)-1)
+#         x = randint(0,len(rooster[0])-1)
+#         k = rooster[y][x]
+#         while k != 0:
+#             y = randint(0,len(rooster)-1)
+#             x = randint(0,len(rooster[0])-1)
+#             k = rooster[y][x]
+#         rooster[y][x] = i
 
 for i in range(len(vakuur)):
     for j in range(vakuur[i]):
-        y = randint(0,len(rooster)-1)
-        x = randint(0,len(rooster[0])-1)
-        k = rooster[y][x]
-        while k != 0:
-            y = randint(0,len(rooster)-1)
-            x = randint(0,len(rooster[0])-1)
-            k = rooster[y][x]
+        place = options.pop(randint(0,len(options)-1))
+        y = place[0]
+        x = place[1]
         rooster[y][x] = i
+        
+
+
 
 print(rooster)
 
-naamrooster = [
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0],
-    [0,0,0,0,0,0]]
+naamrooster = []
 
 for i in range(len(rooster)):
-    for j in range(len(rooster[0])):
-        naamrooster[i][j] = vaknaam[rooster[i][j]]
+    temprooster = []
+    for j in range(len(rooster[i])):
+        temprooster.append(vaknaam[rooster[i][j]])
+    naamrooster.append(temprooster)
+
 print(*naamrooster,sep='\n')
 
-print("My program took", time.time() - start_time, "to run")
+#in het maken van rooster een lijst met opties gebruiken
+# misschien numpy arrays gebruiken?
