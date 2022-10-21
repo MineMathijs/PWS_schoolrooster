@@ -21,7 +21,9 @@ rooster = roostergen.gen_rooster(vakken,dagen,daguuren)
 score = 10_000
 
 print(*rooster,sep='\n')
+print()
 roostergen.print_rooster_vaknaam(rooster,vakken)
+print()
 
 ### tussenuren:
 for i in range(len(rooster)): #1 tussenuur
@@ -46,21 +48,35 @@ for i in range(len(rooster)): #3 tussenuren
                 print("Tussenuur:   " + str(i) + " : " + str(j+1) + "-" + str(j+3))
 
 
-for i in range(len(rooster)):
+# for i in range(len(rooster)): # NIET VERWIJDEREN, DEZE RUNNED IETS SNELLER MAAR KRIJG NIET ALLE PLEKKEN VAN DE SLECHTE VAKKEN
+#     for j in range(len(vakken)):
+#         if rooster[i].count(j) == 2:
+#             vakplace = rooster[i].index(j) # https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list moet hier nog naar kijken
+#             if rooster[i][vakplace] == rooster[i][vakplace + 1]:
+#                 score += 25
+#                 print("Blokuur:     " + str(i) + " : " + str(vakplace) + "-" + str(vakplace+1))
+#             else:
+#                 score -= 1000
+#                 print("2Uur:        " + str(i) + " : " + str(vakplace) + " and ?")
+#         elif rooster[i].count(j) >= 3:
+#             vakplace = rooster[i].index(j)
+#             score -= 1000
+#             print("3+uur:       " + str(i) + " : " + str(vakplace) + " and ?")
+
+#zelfde vak meerdere keren op dezelde dag
+for i in range(len(rooster)): # runned iets slomer maar is beter als ik een beter algoritme ga maken
     for j in range(len(vakken)):
-        if rooster[i].count(j) == 2:
-            vakplace = rooster[i].index(j) # https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list moet hier nog naar kijken
-            if rooster[i][vakplace] == rooster[i][vakplace + 1]:
-                score += 25
-                print("Blokuur:     " + str(i) + " : " + str(vakplace) + "-" + str(vakplace+1))
+        if rooster[i].count(j) >=2:
+            vakplace = [k for k, e in enumerate(rooster[i]) if e == j] # https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list moet hier nog naar kijken
+            if len(vakplace) == 2:
+                if vakplace[0] == (vakplace[1] - 1) :
+                    score += 25
+                    print("blokuur vak " + str(j) + " op " + str(i) + " : " + str(vakplace))
+                else:
+                    score -= 1000
+                    print("2x vak " + str(j) + " op " + str(i) + " : " + str(vakplace))
             else:
                 score -= 1000
-                print("2Uur:        " + str(i) + " : " + str(vakplace) + " and ?")
-        elif rooster[i].count(j) >= 3:
-            vakplace = rooster[i].index(j)
-            score -= 1000
-            print("3+uur:       " + str(i) + " : " + str(vakplace) + " and ?")
-
-
+                print("3+x vak " + str(j) + " op " + str(i) + " : " + str(vakplace))
 
 print("\nscore:       " + str(score))

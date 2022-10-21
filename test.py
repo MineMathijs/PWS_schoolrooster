@@ -1,3 +1,7 @@
 # testing sandbox
-list1 = [1,0,0,1,3,2,4]
-print(list1.index(3))
+import roostergen
+
+rooster = roostergen.leegrooster(5,6)
+opties = roostergen.roosteropties(rooster)
+print(*rooster,sep='\n')
+print(opties)
