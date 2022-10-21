@@ -13,50 +13,42 @@ def roosteropties(rooster: list): # genereert alle mogelijke opties voor plekken
             options.append(tempoptions)
     return options
 
-def gen_rooster(vakuur: list, dagen: int, daguuren: int): #genereert een rooster met het vak nummer als plaats in list vakuur
+def gen_rooster(vakken: list, dagen: int, daguuren: int): #genereert een rooster met het vak nummer als plaats in list vakuur
     rooster = leegrooster(dagen,daguuren)
     options = roosteropties(rooster)
-    for i in range(len(vakuur)):
-        for j in range(vakuur[i]):
+    for i in range(len(vakken)):
+        for j in range(vakken[i][1]):
             place = options.pop(randint(0,len(options)-1))
             y = place[0]
             x = place[1]
             rooster[y][x] = i
     return rooster
 
-def print_rooster_vaknaam(rooster: list, vaknaam: list): # print de rooster list met woorden ipv nummers
+def print_rooster_vaknaam(rooster: list, vakken: list): # print de rooster list met woorden ipv nummers
     naamrooster = []
     for i in range(len(rooster)):
         temprooster = []
         for j in range(len(rooster[i])):
-            temprooster.append(vaknaam[rooster[i][j]])
+            temprooster.append(vakken[rooster[i][j]][2])
         naamrooster.append(temprooster)
     print(*naamrooster,sep='\n')
 
 
 
-dagen = 5
-daguuren = 6
-vakuur = [ # #uuren per #vak
-    0,
-    4,
-    3,
-    3,
-    5,
-    2,
-    4,
-    3
-]
-vaknaam = [ # naam per #vak
-    "-          ",
-    "Informatica",
-    "Wiskunde   ",
-    "Engels     ",
-    "Nederlands ",
-    "Natuurkunde",
-    "Scheikunde ",
-    "Duits      "
-]
+# dagen = 5
+# daguuren = 6
 
-rooster = gen_rooster(vakuur,dagen,daguuren)
-print_rooster_vaknaam(rooster,vaknaam)
+# vakken = [
+#     [0, 0, '-           '],
+#     [1, 4, 'Informatica '],
+#     [2, 3, 'Wiskunde    '],
+#     [3, 3, 'Engels      '],
+#     [4, 5, 'Nederlands  '],
+#     [5, 2, 'Natuurkunde '],
+#     [6, 4, 'Scheikunde  '],
+#     [7, 3, 'Duits       ']
+# ]
+
+# rooster = gen_rooster(vakken,dagen,daguuren)
+# print(*rooster,sep='\n')
+# print_rooster_vaknaam(rooster,vakken)
