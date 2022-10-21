@@ -67,3 +67,10 @@ PvA:
 
 eerst 1 rooster voor 1 persoon.
 5x6
+
+----------------------------------
+foutenindex
+1: 1x tussenuur
+2: 2x tussenuur
+3: 3x tussenuur
+4: 2x op 1 dag
