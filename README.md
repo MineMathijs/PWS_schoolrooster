@@ -67,3 +67,5 @@ PvA:
 
 eerst 1 rooster voor 1 persoon.
 5x6
+
+per vak positie als nummer, zo kan ik wel crossover doen
