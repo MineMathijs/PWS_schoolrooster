@@ -75,3 +75,5 @@ foutenindex
 2: 2x tussenuur
 3: 3x tussenuur
 4: 2x op 1 dag
+
+https://github.com/mcychan/GASchedule.py 
