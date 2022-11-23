@@ -1,4 +1,4 @@
-from numpy
+from numpy import floor
 import roosterfitness
 import roostergen
 from random import randint
