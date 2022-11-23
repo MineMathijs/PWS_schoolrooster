@@ -45,7 +45,8 @@ def get_top_populations(population: list, ammount: int):
 
 
 def mutate(rooster: list, rate: int):
-    opties = roostergen.roosteropties(rooster)
+    rooster_new = rooster
+    opties = roostergen.roosteropties(rooster_new)
     for _ in range(rate):
         pos1 = opties.pop(randint(0, len(opties) - 1))
         pos2 = opties.pop(randint(0, len(opties) - 1))
@@ -53,11 +54,11 @@ def mutate(rooster: list, rate: int):
         x2 = pos2[1]
         y1 = pos1[0]
         y2 = pos2[0]
-        pos1vak = rooster[y1][x1]
-        pos2vak = rooster[y2][x2]
-        rooster[y1][x1] = pos2vak
-        rooster[y2][x2] = pos1vak
-    return rooster
+        pos1vak = rooster_new[y1][x1]
+        pos2vak = rooster_new[y2][x2]
+        rooster_new[y1][x1] = pos2vak
+        rooster_new[y2][x2] = pos1vak
+    return rooster_new
 
 
 def next_generation(
@@ -77,8 +78,10 @@ def next_generation(
         multiplier = floor(population_size / top_ammount)
     wildcards = population_size - (top_ammount * multiplier)
 
-    for i in range(len(top_population)):
-        next_population.append(top_population[i])
+    # for i in range(len(top_population)):
+    #     next_population.append(top_population[i])
+    for top in top_population:
+        next_population.append(top)
 
     for _ in range(multiplier - 1):
         for i in range(len(top_population)):
