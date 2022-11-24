@@ -77,3 +77,37 @@ foutenindex
 4: 2x op 1 dag
 
 https://github.com/mcychan/GASchedule.py 
+
+--------------------------------------
+
+input:
+
+Vak_id | Vak_naam | Uuren | (Room_eisen)
+Docent_id | Docent_naam | vak_id | (beschikbaarheid)
+Leerling_id | leerling_naam | vakken | 
+(Room_id | Room_name | eisen)
+dagen | dag_uuren
+
+generations | populatie_grote | mutatie kans | cross-over kans
+Fitness eisen | penalty
+
+
+
+tussen:
+generate een rooster:
+genetic algoritm
+
+
+
+output:
+
+table :
+[(Vak_naam, Docent, (Room)),(Vak_naam, Docent, (Room)),,,]
+[]
+[]
+[]
+[]
+
+----------------------------------------------
+
+website -> database -> python code -> database -> website
